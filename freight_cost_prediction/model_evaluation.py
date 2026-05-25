@@ -22,12 +22,12 @@ def train_random_forest(X_train, y_train, max_depth=6):
     model.fit(X_train, y_train)
     return model
 
-def evaluate_model(model, X_test, y_test, model_name: str) --> dict:
+def evaluate_model(model, X_test, y_test, model_name: str) -> dict:
     # Evaluate regression model and return metrics
     preds = model.predict(X_test)
     mae = mean_absolute_error(y_test, preds)
     rmse = mean_squared_error(y_test, preds)
-    r2 = r2_score(y_test, predis)*100
+    r2 = r2_score(y_test, preds)*100
 
     print(f'\n{model_name} Performance :')
     print(f'mae : {mae:.2f}')
