@@ -1,7 +1,7 @@
 import joblib
 import pandas as pd
 
-MODEL_PATH = '../models/predict_freight_model.pkl'
+MODEL_PATH = 'models/predict_freight_model.pkl'
 
 def load_model(model_path: str=MODEL_PATH):
     """
@@ -28,7 +28,7 @@ def predict_freight_cost(input_data):
 
 if __name__ == '__main__':
     sample_data = {
-        'Dollars':[18500, 9000, 3000, 200]
+        'Dollars':[18500, 9000, 6000, 200]
     }
     prediction = predict_freight_cost(sample_data)
     print(prediction)
