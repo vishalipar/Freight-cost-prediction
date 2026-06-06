@@ -18,7 +18,7 @@ def main():
 
     X_train, X_test, y_train, y_test = split_data(df, FEATURES, TARGET)
     X_train_scaled, X_test_scaled = scale_features(
-    X_train, X_test, 'models/scaler.pkl'
+    X_train, X_test, '../models/scaler.pkl'
     )
 
     grid_search = train_random_forest(X_train_scaled, y_train)
@@ -30,7 +30,7 @@ def main():
         'Random Forest Classifier'
     )
 
-    joblib.dump(grid_search.best_estimator_, 'models/predict_flag_invoice.pkl')
+    joblib.dump(grid_search.best_estimator_, '../models/predict_flag_invoice.pkl')
 
 if __name__ == '__main__':
     main()

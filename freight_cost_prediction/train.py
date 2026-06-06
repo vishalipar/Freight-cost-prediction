@@ -11,7 +11,7 @@ evaluate_model
 
 def main():
     db_path = '../data/inventory.db'
-    model_dir = Path('models')
+    model_dir = Path('../models')
     model_dir.mkdir(exist_ok=True)
 
     # load data
