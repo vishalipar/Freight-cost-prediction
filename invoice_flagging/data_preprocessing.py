@@ -11,9 +11,10 @@ def load_invoice_data():
     WITH purchase_agg AS (
         SELECT
             p.PONumber,
-            COUNT(DISTINCT, p.Brand) AS total_brands,
-            SUM(p.Quantity) AS total_item_dollars,
-            AVG(julianday(p.ReceivingDate) - julianday(p.PODate) AS avg_receiving_delay
+            COUNT(DISTINCT p.Brand) AS total_brands,
+            SUM(p.Quantity) AS total_item_quantity,
+            SUM(p.Dollars) AS total_item_dollars,
+            AVG(julianday(p.ReceivingDate) - julianday(p.PODate)) AS avg_receiving_delay
         FROM purchases p
         GROUP BY p.PONumber
     )
@@ -33,7 +34,7 @@ def load_invoice_data():
         ON vi.PONumber = pa.PONumber
     """
 
-    dfdf = pd.read_sql_query(query, conn)
+    df = pd.read_sql_query(query, conn)
     conn.close()
     return df
 
